@@ -31,11 +31,39 @@
 
 ; Check whether a list is a valid board
 (define (board? lst)
-  'todo)
+
+  ;checks to see if the length of the list is a square root of a number
+  (define lenList (length lst))
+  (define sqrtNum (sqrt lenList))
+  (define lengthCheck? (integer? sqrtNum))
+
+
+  ;checks to see if there are only X's E's and O's
+
+  (define (charCheck? lst)
+    (define index (car lst))
+    (if (member index '(X O E))
+        (charCheck? (cdr lst))
+        #f))
+  
+  ;checks for X going first
+  (define x-Checks 'X)
+  (define o-Checks 'O)
+  (define xSum (count (equal? x-Checks) lst))
+  (define oSum (count (equal? o-Checks) lst))
+  (define order? (> xSum oSum))
+
+  (and lengthCheck? charCheck? order?))
 
 ;;; From the board, calculate who is making a move this turn
 (define (next-player board)
-  'todo)
+  (define x-Checks 'X)
+  (define o-Checks 'O)
+  (define xSum (count (equal? x-Checks) board))
+  (define oSum (count (equal? o-Checks) board))
+  (if (<= xSum oSum)
+      'X
+      'O))
 
 ;;; If player ('X or 'O) want to make a move, check whether it's this
 ;;; player's turn and the position on the board is empty ('E)
