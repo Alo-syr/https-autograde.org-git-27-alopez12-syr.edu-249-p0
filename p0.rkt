@@ -64,9 +64,9 @@
   (define o-Checks 'O)
   (define xSum (count (equal? x-Checks) board))
   (define oSum (count (equal? o-Checks) board))
-  (if (<= xSum oSum)
-      'X
-      'O))
+  (if (< xSum oSum)
+      'O
+      'X))
 
 ;;; If player ('X or 'O) want to make a move, check whether it's this
 ;;; player's turn and the position on the board is empty ('E)
