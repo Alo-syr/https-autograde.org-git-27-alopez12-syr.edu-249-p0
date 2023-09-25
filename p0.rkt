@@ -46,14 +46,17 @@
         (charCheck? (cdr lst))
         #f))
   
-  ;checks for X going first
+  ;checks for X going first and to make sure that X's and O's differs by at most 1.
   (define x-Checks 'X)
   (define o-Checks 'O)
   (define xSum (count (lambda (x) (equal? x x-Checks)) lst))
   (define oSum (count (lambda (x) (equal? x o-Checks)) lst))
-  (define order? (> xSum oSum))
 
-  (and lengthCheck? charCheck? order?))
+  (define difference (abs (- xSum oSum)))
+  (define order? (> xSum oSum))
+  (define limit? (<= diff 1))
+
+  (and lengthCheck? charCheck? order? limit?))
 
 ;;; From the board, calculate who is making a move this turn
 (define (next-player board)
