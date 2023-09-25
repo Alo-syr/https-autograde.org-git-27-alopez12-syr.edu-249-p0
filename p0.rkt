@@ -62,8 +62,8 @@
 (define (next-player board)
   (define x-Checks 'X)
   (define o-Checks 'O)
-  (define xSum (count (lambda (x) (equal? x x-Checks) board))
-  (define oSum (count (lambda (x) (equal? x o-Checks) board))
+  (define xSum (count (lambda (x) (equal? x x-Checks) board)))
+  (define oSum (count (lambda (x) (equal? x o-Checks) board)))
   (if (< xSum oSum)
       'O
       'X))
