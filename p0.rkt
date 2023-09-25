@@ -53,8 +53,7 @@
   (define oSum (count (equal? o-Checks) lst))
   (define order? (> xSum oSum))
 
-  (and lengthCheck? charCheck? order?)
-   'todo)
+  (and lengthCheck? charCheck? order?))
 
 ;;; From the board, calculate who is making a move this turn
 (define (next-player board)
@@ -64,8 +63,7 @@
   (define oSum (count (equal? o-Checks) board))
   (if (<= xSum oSum)
       'X
-      'O)
-   'todo)
+      'O))
 
 ;;; If player ('X or 'O) want to make a move, check whether it's this
 ;;; player's turn and the position on the board is empty ('E)
