@@ -64,9 +64,11 @@
   (define o-Checks 'O)
   (define xSum (count (lambda (x) (equal? x x-Checks)) board))
   (define oSum (count (lambda (x) (equal? x o-Checks)) board))
-  (if (< xSum oSum)
-      'O
-      'X))
+
+  (cond
+    [(< xSum oSum) 'O]
+    [(< oSum xSum) 'X]
+    [else x-Checks]))
 
 ;;; If player ('X or 'O) want to make a move, check whether it's this
 ;;; player's turn and the position on the board is empty ('E)
