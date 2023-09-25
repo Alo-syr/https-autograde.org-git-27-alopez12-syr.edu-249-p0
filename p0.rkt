@@ -49,8 +49,8 @@
   ;checks for X going first
   (define x-Checks 'X)
   (define o-Checks 'O)
-  (define xSum (count (equal? x-Checks) lst))
-  (define oSum (count (equal? o-Checks) lst))
+  (define xSum (count (lambda (x) (equal? x x-Checks)) lst))
+  (define oSum (count (lambda (x) (equal? x o-Checks)) lst))
   (define order? (> xSum oSum))
 
   (and lengthCheck? charCheck? order?))
