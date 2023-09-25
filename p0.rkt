@@ -53,7 +53,7 @@
   (define oSum (count (lambda (x) (equal? x o-Checks)) lst))
 
   (define difference (abs (- xSum oSum)))
-  (define order? (> oSum xSum))
+  (define order? (> xSum oSum))
   (define limit? (<= difference 1))
 
   (and lengthCheck? charCheck? order? limit?))
