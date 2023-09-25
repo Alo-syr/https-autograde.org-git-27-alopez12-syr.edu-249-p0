@@ -54,7 +54,7 @@
 
   (define difference (abs (- xSum oSum)))
   (define order? (> xSum oSum))
-  (define limit? (<= diff 1))
+  (define limit? (<= difference 1))
 
   (and lengthCheck? charCheck? order? limit?))
 
