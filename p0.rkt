@@ -70,7 +70,25 @@
 ;;; If player ('X or 'O) want to make a move, check whether it's this
 ;;; player's turn and the position on the board is empty ('E)
 (define (valid-move? board row col player)
-  'todo)
+  ; Check if it's the player's turn
+  (define current-player (next-player board))
+  (define is-players-turn (equal? current-player player))
+  
+  ; Calculate the board size
+  (define board-size (sqrt (length board)))
+  
+  ; Check if the specified position is within bounds
+  (define in-bounds? (and (<= 0 row (- board-size 1))
+                          (<= 0 col (- board-size 1))))
+  
+  ; Helper function to check if a position is empty
+  (define (is-empty? lst r c)
+    (equal? (list-ref lst (+ (* r board-size) c)) 'E))
+  
+  ; Check if the position is within bounds and empty
+  (if (and is-players-turn in-bounds?)
+      (is-empty? board row col)
+      #f)) ; Return false if any condition is not met
 
 ;;; To make a move, replace the position at row col to player ('X or 'O)
 ;;; We have implemented this for you--you don't have to write it
